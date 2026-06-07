@@ -1,0 +1,93 @@
+const myMap = (array, callback) => {
+  const result = [];
+  for (let i = 0; i < array.length; i++) {
+    if (i in array) {
+      result.push(callback(array[i], i, array));
+    }
+  }
+  return result;
+};
+
+const myFilter = (array, callback) => {
+  const result = [];
+  for (let i = 0; i < array.length; i++) {
+    if (i in array && callback(array[i], i, array)) {
+      result.push(array[i]);
+    }
+  }
+  return result;
+};
+
+const myReduce = (array, callback, initialValue) => {
+  let accumulator = initialValue;
+  let startIndex = 0;
+
+  if (initialValue === undefined) {
+    if (array.length === 0) {
+      throw new TypeError("Reduce of empty array with no initial value");
+    }
+    accumulator = array[0];
+    startIndex = 1;
+  }
+
+  for (let i = startIndex; i < array.length; i++) {
+    if (i in array) {
+      accumulator = callback(accumulator, array[i], i, array);
+    }
+  }
+  return accumulator;
+};
+
+const myFlat = (array, depth = 1) => {
+  const flatten = (arr, currentDepth) => {
+    if (currentDepth <= 0) return arr.slice();
+    
+    const result = [];
+    for (let i = 0; i < arr.length; i++) {
+      if (i in arr) {
+        if (Array.isArray(arr[i])) {
+          result.push(...flatten(arr[i], currentDepth - 1));
+        } else {
+          result.push(arr[i]);
+        }
+      }
+    }
+    return result;
+  };
+  
+  return flatten(array, depth);
+};
+
+const myDebounce = (fn, delay) => {
+  let timeoutId;
+  return function (...args) {
+    const context = this;
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      fn.apply(context, args);
+    }, delay);
+  };
+};
+
+const myThrottle = (fn, limit) => {
+  let inThrottle;
+  return function (...args) {
+    const context = this;
+    if (!inThrottle) {
+      fn.apply(context, args);
+      inThrottle = true;
+      setTimeout(() => {
+        inThrottle = false;
+      }, limit);
+    }
+  };
+};
+
+const arrayUtils = {
+  map: myMap,
+  filter: myFilter,
+  reduce: myReduce,
+  flat: myFlat,
+  debounce: myDebounce,
+  throttle: myThrottle
+};
