@@ -1,0 +1,179 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Roboto, sans-serif;
+}
+
+body {
+  background-color: #f4f6f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.quiz-container {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 640px;
+  padding: 30px;
+}
+
+header {
+  margin-bottom: 24px;
+}
+
+h1 {
+  color: #1e293b;
+  font-size: 24px;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.high-score-container {
+  text-align: center;
+  font-size: 14px;
+  color: #64748b;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.progress-container {
+  background-color: #e2e8f0;
+  border-radius: 6px;
+  height: 8px;
+  width: 100%;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  background-color: #3b82f6;
+  height: 100%;
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+.quiz-status {
+  display: flex;
+  justify-content: space-between;
+  color: #475569;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+h2 {
+  color: #0f172a;
+  font-size: 18px;
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+.options-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.option-btn {
+  background-color: #ffffff;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  color: #334155;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 14px 20px;
+  text-align: left;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.option-btn:hover:not(:disabled) {
+  background-color: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+.option-btn:disabled {
+  cursor: not-allowed;
+}
+
+.option-btn.correct {
+  background-color: #dcfce7;
+  border-color: #22c55e;
+  color: #14532d;
+}
+
+.option-btn.incorrect {
+  background-color: #fee2e2;
+  border-color: #ef4444;
+  color: #7f1d1d;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.final-score-text {
+  font-size: 20px;
+  color: #334155;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+#final-score {
+  font-weight: 700;
+  color: #3b82f6;
+}
+
+#restart-btn {
+  background-color: #3b82f6;
+  border: none;
+  border-radius: 8px;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 14px;
+  width: 100%;
+  transition: background-color 0.2s ease;
+  margin-top: 20px;
+}
+
+#restart-btn:hover {
+  background-color: #2563eb;
+}
+
+.review-item {
+  border-bottom: 1px solid #e2e8f0;
+  padding: 16px 0;
+}
+
+.review-item:last-child {
+  border-bottom: none;
+}
+
+.review-q {
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 6px;
+  font-size: 15px;
+}
+
+.review-ans {
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.review-ans.user-wrong {
+  color: #ef4444;
+}
+
+.review-ans.actual-correct {
+  color: #22c55e;
+  font-weight: 500;
+}
