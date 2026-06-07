@@ -1,0 +1,68 @@
+ 1. Draw (on paper or digitally) how a browser takes your HTML and turns it into what you see on screen. Label: DOM Tree, Render Tree, Layout, Paint. Explain in your own words why understanding this matters for a web developer.
+
+A browser does not display HTML immediately. First, it downloads the HTML file and parses it into a DOM Tree (Document Object Model). The DOM Tree is a structured representation of all elements such as headings, paragraphs, images, and links.
+
+Then the browser downloads CSS files and combines the HTML structure with styling information. It then creates a Render Tree, which contains only the elements that need to be displayed and their visual styles.
+
+After building the Render Tree, the browser performs Layout. During this stage, it calculates the size and position of every visible element on the page.
+
+Finally, the browser performs Paint, where pixels are drawn onto the screen according to the layout calculations. The user can now see the webpage.
+
+
+HTML
+  ↓
+DOM Tree
+  ↓
+CSS
+  ↓
+Render Tree
+  ↓
+Layout
+  ↓
+Paint
+  ↓
+Screen
+
+
+Understanding this process helps web developers build faster websites. When developers know how rendering works, they can reduce optimize CSS, improve page speed, and create a smoother user experience.
+
+
+ 2. HTTP/3 uses QUIC instead of TCP. Explain in simple terms what problem QUIC solves and why it matters for users in 2026
+
+HTTP/3 uses the QUIC protocol to solve the problem of "head-of-line blocking," a bottleneck in older technology where a single lost piece of data would force the entire webpage to stop loading.By utilizing the Zero Round Trip Time feature, QUIC allows your browser to establish a connection and start downloading content almost instantly, skipping the slow back-and-forth "handshakes" required by previous versions
+This matters for users in 2026 because it makes the web significantly faster and more reliable, particularly on mobile devices or connections where data packets are frequently dropped
+In 2025, QUIC provides the speed and built-in security necessary for modern, high-performance websites to load without frustrating delays.
+
+
+ 3. From your own experience as an internet user, identify ONE website that does not use semantic HTML properly. What clues tell you this? (e.g., accessibility, screen reader compatibility)
+
+I haven't really come across any; But I do know based on what I have learnt that screen readers struggle because they depend on semantic content or tags to help users move through content efficiently.
+
+Another clue is poor search engine understanding. Search engines use semantic HTML to identify important content such as article titles, navigation menus, and page sections. If a page is built almost entirely with `<div>` elements, search engines receive less meaningful information about the page structure.
+
+Semantic HTML improves accessibility, SEO, and maintainability. It helps users with disabilities, improves compatibility with assistive technologies, and makes websites easier to understand for both humans and machines. A website that ignores semantic HTML often feels harder to navigate and less user-friendly overall.
+
+
+ Product Thinking 1: Blog for a famous chef
+
+Semantic HTML can significantly help a chef's blog gain more traffic because it helps search engines understand the content better.
+
+The `<main>` element tells search engines where the primary content of the page exists. Each recipe or blog post can be placed inside an `<article>` element, signaling that it is a standalone piece of content. Search engines can then recognize each recipe as an individual article worth indexing.
+
+The `<header>` element can contain recipe titles, publication dates, and author information. This helps search engines identify key information about the content.
+
+The `<aside>` element can contain related recipes, cooking tips, popular posts, or advertisements without confusing them with the main content. Search engines can better distinguish supporting information from the primary article.
+
+Better structure leads to better indexing, improved accessibility, and potentially higher rankings, which can result in more organic traffic.
+
+
+Product Thinking 2: Edge computing for a real-time multiplayer game
+Edge computing moves processing closer to users. Imagine you're designing a real-time multiplayer game. What edge computing benefits would matter most, and why?
+
+In designing a real-time multiplayer game in 2026, the following edge computing benefits would matter most for ensuring a high-quality player experience:
+
+Significantly Lower Latency(lagging): This is the important factor for real-time gaming, where delays (lag) can ruin the experience. Edge computing reduces latency by 40–70% because logic is executed at a nearby edge server rather than a far-away central server.
+
+Enhanced Reliability: Real-time games require constant uptime. Because edge computing uses a distributed network, edge nodes can continue to serve content or manage player sessions even if a central server fails.
+
+Localized Privacy and Security: Sensitive player data, such as authentication and personalization, can be processed within the user's specific region at the edge, enhancing privacy and reducing the risk of data exposure during long-distance transmission.
