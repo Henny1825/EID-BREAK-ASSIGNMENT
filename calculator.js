@@ -1,71 +1,60 @@
-function add(a, b) {
-  return a + b;
-}
+const add = (a, b) => a + b;
+const subtract = (a, b) => a - b;
+const multiply = (a, b) => a * b;
 
-function subtract(a, b) {
-  return a - b;
-}
-
-function multiply(a, b) {
-  return a * b;
-}
-
-function divide(a, b) {
-  if (b === 0) throw new Error("Cannot divide by zero");
+const divide = (a, b) => {
+  if (b === 0) {
+    throw new Error("Mathematical Error: Cannot divide by zero.");
+  }
   return a / b;
-}
+};
 
-function squareRoot(a) {
-  if (a < 0) throw new Error("Cannot take square root of a negative number");
-  return Math.sqrt(a);
-}
+const squareRoot = (num) => {
+  if (num < 0) {
+    throw new Error("Mathematical Error: Cannot take square root of a negative number.");
+  }
+  return Math.sqrt(num);
+};
 
-function power(base, exp) {
-  return Math.pow(base, exp);
-}
+const power = (base, exponent) => Math.pow(base, exponent);
 
-function factorial(n) {
-  if (n < 0) throw new Error("Factorial is not defined for negative numbers");
-  if (n === 0 || n === 1) return 1;
-  return n * factorial(n - 1);
-}
+const factorial = (num) => {
+  if (num < 0 || !Number.isInteger(num)) {
+    throw new Error("Mathematical Error: Factorial is only defined for non-negative integers.");
+  }
+  if (num === 0 || num === 1) return 1;
+  
+  let result = 1;
+  for (let i = 2; i <= num; i++) {
+    result *= i;
+  }
+  return result;
+};
 
-function getOperation(name) {
+const selectOperation = (operationName) => {
   const operations = {
-    add,
-    subtract,
-    multiply,
-    divide,
-    squareRoot,
-    power,
-    factorial,
+    'add': add,
+    'subtract': subtract,
+    'multiply': multiply,
+    'divide': divide,
+    'sqrt': squareRoot,
+    'power': power,
+    'factorial': factorial
   };
-  return operations[name] || null;
-}
 
-function calculate(name, ...args) {
-  const operation = getOperation(name);
-  if (!operation) throw new Error(`Unknown operation: "${name}"`);
-  return operation(...args);
-}
+  return operations[operationName] || null;
+};
 
-try {
-  calculate("divide", 5, 0);
-} catch (e) {
-  console.log("Error:", e.message); // Cannot divide by zero
-}
+const calculate = (operationName, ...args) => {
+  const operation = selectOperation(operationName);
 
-try {
-  calculate("squareRoot", -9);
-} catch (e) {
-  console.log("Error:", e.message); 
-}
+  if (!operation) {
+    return `Error: Operation '${operationName}' not found.`;
+  }
 
-
-console.log(calculate("add", 10, 5));       
-console.log(calculate("subtract", 10, 4));   
-console.log(calculate("multiply", 3, 7));    
-console.log(calculate("divide", 20, 4));     
-console.log(calculate("squareRoot", 81));    
-console.log(calculate("power", 2, 10));      
-console.log(calculate("factorial", 6));      
+  try {
+    return operation(...args);
+  } catch (error) {
+    return error.message;
+  }
+};
